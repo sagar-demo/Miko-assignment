@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class AssemblyLanguageParser {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the assembly language code from the user.
+        String assemblyLanguageCode = scanner.nextLine();
+
+        // Parse the assembly language code.
+        String[] instructions = assemblyLanguageCode.split(" ");
+
+        // For each instruction, execute it and print the result.
+        for (String instruction : instructions) {
+            if (instruction.equals("MV")) {
+                // Move a constant into a register.
+                int register = Integer.parseInt(instructions[1]);
+                int constant = Integer.parseInt(instructions[2]);
+                System.out.println("MOV " + register + ", " + constant);
+            } else if (instruction.equals("ADD")) {
+                // Add two registers together. Save results in the first register.
+                int register1 = Integer.parseInt(instructions[1]);
+                int register2 = Integer.parseInt(instructions[2]);
+                System.out.println("ADD " + register1 + ", " + register2);
+            } else if (instruction.equals("SHOW")) {
+                // Show the results of a register.
+                int register = Integer.parseInt(instructions[1]);
+                System.out.println("SHOW " + register);
+            }
+        }
+    }
+}
